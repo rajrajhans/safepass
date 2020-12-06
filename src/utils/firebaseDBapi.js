@@ -17,11 +17,7 @@ async function createNewPassword(userID, passwordInfo) {
 
   const encryptedPassword = encrypt(password);
 
-  console.log('making req');
-
   await passRecordRef.set(encryptedPassword);
-
-  console.log('Done');
 }
 
 function getFirebasePasswordReference(userID, passwordID) {

@@ -7,6 +7,7 @@ import PasswordGenerator from './PasswordGenerator';
 import { InputGroup } from 'react-bootstrap';
 import { createNewPassword } from '../../utils/firebaseDBapi';
 import { AuthContext } from './AuthContext';
+import { LoadingContext } from './LoadingContext';
 
 const AddNewPassword = ({ isActive, handleClose }) => {
   const [formState, setFormState] = useState({
@@ -23,9 +24,20 @@ const AddNewPassword = ({ isActive, handleClose }) => {
 
   const { currentUser } = useContext(AuthContext);
 
-  const handleSubmit = e => {
+  const { setIsLoading } = useContext(LoadingContext);
+
+  const handleSubmit = async e => {
     e.preventDefault();
-    createNewPassword(currentUser.uid, password);
+    setIsLoading(true);
+    const passwordInfo = {
+      category: formState.category,
+      title: formState.title,
+      username: formState.username,
+      password: password,
+    };
+    await createNewPassword(currentUser.uid, passwordInfo);
+    handleClose();
+    setIsLoading(false);
   };
 
   const handleFormChange = e => {
@@ -51,7 +63,7 @@ const AddNewPassword = ({ isActive, handleClose }) => {
 
   return (
     <Modal show={isActive} onHide={handleClose}>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Modal.Header closeButton>
           <Modal.Title>Add a New Password</Modal.Title>
         </Modal.Header>
@@ -137,7 +149,7 @@ const AddNewPassword = ({ isActive, handleClose }) => {
             Close
           </Button>
 
-          <Button variant={'primary'} onClick={handleSubmit} type={'Submit'}>
+          <Button variant={'primary'} type={'Submit'}>
             Add Password
           </Button>
         </Modal.Footer>
