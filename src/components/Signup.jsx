@@ -29,9 +29,11 @@ const Signup = () => {
             return res.user.updateProfile({
               displayName: signupState.displayname,
             });
+          })
+          .then(() => {
+            navigate('/');
+            setIsLoading(false);
           });
-        navigate('/');
-        setIsLoading(false);
       } catch (e) {
         setIsLoading(false);
         alert(e.message);
