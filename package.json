@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.2.2",
     "bcryptjs": "^2.4.3",
     "firebase": "^8.1.2",
+    "lodash": "^4.17.20",
     "react": "16.14.0",
     "react-bootstrap": "^1.4.0",
     "react-bootstrap-range-slider": "^2.0.2",
