@@ -1,12 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Modal } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import PasswordGenerator from './PasswordGenerator';
+import { InputGroup } from 'react-bootstrap';
 
 const AddNewPassword = ({ isActive, handleClose }) => {
+  const [formState, setFormState] = useState({
+    category: 'General',
+    title: '',
+    username: '',
+  });
+
+  const [password, setPassword] = useState('');
+
+  const [isPwdVisible, setIsPwdVisible] = useState(false);
+
   const handleSubmit = () => {
     console.log('Submitted');
+  };
+
+  const handleFormChange = e => {
+    const nameOfField = e.target.name;
+    const value = e.target.value;
+
+    setFormState({ ...formState, [nameOfField]: value });
+  };
+
+  const handlePwdChange = e => {
+    setPassword(e.target.value);
+  };
+
+  const toggleIsPwdVisible = e => {
+    setIsPwdVisible(!isPwdVisible);
   };
 
   return (
@@ -20,7 +47,13 @@ const AddNewPassword = ({ isActive, handleClose }) => {
             <Col>
               <Form.Group>
                 <Form.Label>Category</Form.Label>
-                <Form.Control as={'select'} custom placeholder={'General'}>
+                <Form.Control
+                  as={'select'}
+                  custom
+                  placeholder={'General'}
+                  onChange={handleFormChange}
+                  name={'category'}
+                >
                   <option value={'General'}>General</option>
                   <option value={'Social'}>Social</option>
                   <option value={'Email'}>Email</option>
@@ -37,6 +70,7 @@ const AddNewPassword = ({ isActive, handleClose }) => {
                   required
                   name={'title'}
                   placeholder={'Facebook'}
+                  onChange={handleFormChange}
                 />
               </Form.Group>
             </Col>
@@ -44,13 +78,39 @@ const AddNewPassword = ({ isActive, handleClose }) => {
 
           <Form.Group>
             <Form.Label>Username / Email</Form.Label>
-            <Form.Control required name={'username'} />
+            <Form.Control
+              onChange={handleFormChange}
+              required
+              name={'username'}
+            />
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Password</Form.Label>
-            <Form.Control required name={'password'} type={'password'} />
+            <InputGroup>
+              <Form.Control
+                onChange={handlePwdChange}
+                required
+                name={'password'}
+                value={password}
+                type={isPwdVisible ? 'text' : 'password'}
+              />
+              <InputGroup.Append>
+                <Button
+                  variant={'outline-secondary'}
+                  onClick={toggleIsPwdVisible}
+                >
+                  👀
+                </Button>
+              </InputGroup.Append>
+            </InputGroup>
           </Form.Group>
+
+          <h7>
+            Generate a Secure Password
+            <br />
+          </h7>
+          <PasswordGenerator isActive={true} setPassword={setPassword} />
         </Modal.Body>
 
         <Modal.Footer>
