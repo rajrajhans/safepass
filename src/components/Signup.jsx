@@ -1,15 +1,17 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { signUpUser } from '../utils/auth';
 import app from '../utils/firebaseInit';
 import { navigate } from '@reach/router';
+import { LoadingContext } from './helpers/LoadingContext';
 
 const Signup = () => {
   const [signupState, setSignupState] = useState({ email: '', password: '' });
+  const { setIsLoading } = useContext(LoadingContext);
 
   const handleSubmit = useCallback(
     async e => {
+      setIsLoading(true);
       e.preventDefault();
       try {
         await app
@@ -19,7 +21,9 @@ const Signup = () => {
             signupState.password
           );
         navigate('/');
+        setIsLoading(false);
       } catch (e) {
+        setIsLoading(false);
         alert(e.message);
         console.log(e);
       }
