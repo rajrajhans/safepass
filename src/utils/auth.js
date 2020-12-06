@@ -1,4 +1,5 @@
-import { firebase } from 'firebase';
+import firebase from 'firebase/app';
+require('firebase/auth');
 
 export function signUpUser(email, password) {
   firebase
