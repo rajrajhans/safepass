@@ -17,6 +17,8 @@ const AddNewPassword = ({ isActive, handleClose }) => {
 
   const [isPwdVisible, setIsPwdVisible] = useState(false);
 
+  const [isPwdGenActive, setIsPwdGenActive] = useState(false);
+
   const handleSubmit = () => {
     console.log('Submitted');
   };
@@ -34,6 +36,11 @@ const AddNewPassword = ({ isActive, handleClose }) => {
 
   const toggleIsPwdVisible = e => {
     setIsPwdVisible(!isPwdVisible);
+  };
+
+  const handlePwdGenToggle = e => {
+    e.preventDefault();
+    setIsPwdGenActive(!isPwdGenActive);
   };
 
   return (
@@ -106,11 +113,17 @@ const AddNewPassword = ({ isActive, handleClose }) => {
             </InputGroup>
           </Form.Group>
 
-          <h7>
-            Generate a Secure Password
-            <br />
-          </h7>
-          <PasswordGenerator isActive={true} setPassword={setPassword} />
+          <div style={{ marginBottom: '5px' }}>
+            <a href={'#'} onClick={handlePwdGenToggle}>
+              {!isPwdGenActive
+                ? 'Generate a Secure Password'
+                : 'Close Generator'}
+              <br />
+            </a>
+          </div>
+          {isPwdGenActive ? (
+            <PasswordGenerator setPassword={setPassword} />
+          ) : null}
         </Modal.Body>
 
         <Modal.Footer>

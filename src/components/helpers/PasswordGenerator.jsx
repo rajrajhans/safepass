@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import RangeSlider from 'react-bootstrap-range-slider';
 import { Form, InputGroup, Card } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
+import generatePassword from '../../utils/randomPasswordGenerator';
 
-const PasswordGenerator = ({ isActive, setPassword }) => {
+const PasswordGenerator = ({ setPassword }) => {
   const [pwdlength, setPwdlength] = useState(8);
   const [isNum, setIsNum] = useState(true);
   const [isAlphabets, setIsAlphabets] = useState(true);
   const [isSpecialChar, setIsSpecialChar] = useState(false);
 
-  if (!isActive) return null;
+  useEffect(() => {
+    setPassword(generatePassword(pwdlength, isNum, isSpecialChar));
+  }, [pwdlength, isNum, isSpecialChar, setPassword]);
 
   return (
     <Card>
