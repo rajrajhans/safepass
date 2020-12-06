@@ -50,7 +50,11 @@ const MyPasswords = () => {
 
   return (
     <Container>
-      <AddNewPassword isActive={isAddPwdActive} handleClose={handleClose} />
+      <AddNewPassword
+        isActive={isAddPwdActive}
+        handleClose={handleClose}
+        refreshDashboard={getAndSetPasswordstoState}
+      />
       <div>
         <div className="welcomeText">Welcome, {currentUser.displayName}.</div>
 

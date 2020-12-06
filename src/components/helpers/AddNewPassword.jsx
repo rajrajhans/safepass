@@ -11,7 +11,7 @@ import { LoadingContext } from './LoadingContext';
 import Fade from 'react-bootstrap/Fade';
 import Collapse from 'react-bootstrap/Collapse';
 
-const AddNewPassword = ({ isActive, handleClose }) => {
+const AddNewPassword = ({ isActive, handleClose, refreshDashboard }) => {
   const [formState, setFormState] = useState({
     category: 'General',
     title: '',
@@ -39,6 +39,7 @@ const AddNewPassword = ({ isActive, handleClose }) => {
       password: password,
     };
     await createNewPassword(currentUser.uid, passwordInfo);
+    refreshDashboard();
     setIsLoading(false);
   };
 
