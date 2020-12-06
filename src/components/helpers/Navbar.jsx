@@ -1,30 +1,39 @@
 import Navbar from 'react-bootstrap/Navbar';
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Logo from './Logo';
+import { AuthContext } from './AuthContext';
 
-class ESNavbar extends Component {
-  render() {
-    return (
-      <Navbar bg={'light'}>
-        <Navbar.Brand href={'/'}>
-          <Logo />
-        </Navbar.Brand>
+const CustomNavbar = () => {
+  const { currentUser } = useContext(AuthContext);
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse
-          id="basic-navbar-nav"
-          className={'justify-content-end'}
-        >
-          <Nav>
-            <Nav.Link href="/" active>
-              Sign In
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-    );
-  }
-}
+  return (
+    <Navbar bg={'light'}>
+      <Navbar.Brand href={'/'}>
+        <Logo />
+      </Navbar.Brand>
 
-export default ESNavbar;
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav" className={'justify-content-end'}>
+        <Nav>
+          <Nav.Link href="/">Home</Nav.Link>
+          {currentUser ? (
+            <>
+              <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+
+              <Nav.Link href="/logout">Sign Out</Nav.Link>
+            </>
+          ) : (
+            <>
+              <Nav.Link href="/login">Sign In</Nav.Link>
+
+              <Nav.Link href="/signup">Sign Up</Nav.Link>
+            </>
+          )}
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  );
+};
+
+export default CustomNavbar;
