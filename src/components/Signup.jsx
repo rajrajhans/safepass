@@ -4,9 +4,14 @@ import Button from 'react-bootstrap/Button';
 import app from '../utils/firebaseInit';
 import { navigate } from '@reach/router';
 import { LoadingContext } from './helpers/LoadingContext';
+import { AuthContext } from './helpers/AuthContext';
 
 const Signup = () => {
-  const [signupState, setSignupState] = useState({ email: '', password: '' });
+  const [signupState, setSignupState] = useState({
+    displayname: '',
+    email: '',
+    password: '',
+  });
   const { setIsLoading } = useContext(LoadingContext);
 
   const handleSubmit = useCallback(
@@ -17,6 +22,7 @@ const Signup = () => {
         await app
           .auth()
           .createUserWithEmailAndPassword(
+            signupState.displayname,
             signupState.email,
             signupState.password
           );
@@ -38,10 +44,28 @@ const Signup = () => {
     setSignupState({ ...signupState, [nameOfField]: value });
   };
 
+  const { currentUser } = useContext(AuthContext);
+
+  if (currentUser) {
+    navigate('/');
+  }
+
   return (
     <div>
       Signup
       <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="name">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="text"
+            required
+            name="displayname"
+            placeholder="Enter your name"
+            onChange={handlesignupChange}
+          />
+          <Form.Text className="text-muted">What shall we call you?</Form.Text>
+        </Form.Group>
+
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -65,6 +89,9 @@ const Signup = () => {
             placeholder="Password"
             onChange={handlesignupChange}
           />
+          <Form.Text className="text-muted">
+            This will be your master password. Choose wisely!
+          </Form.Text>
         </Form.Group>
 
         <Form.Group controlId="formBasicCheckbox">
