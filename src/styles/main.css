@@ -2,6 +2,13 @@ body{
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+.bigLine{
+    height: 3px;
+    margin-top: -3px;
+    width: 50px;
+    background: #0069d9;
+}
+
 .loadingWrapper {
     position: absolute;
     height: 0;
@@ -12,9 +19,9 @@ body{
     text-align: center;
     font-size: 1.2em;
     color: #FFF;
-    background: rgba(0, 0, 0, 1);
-    z-index: 800 !important;
-    transition: opacity 400ms ease-in
+    opacity: 0.5;
+    z-index: 800;
+    transition: all 0.15s linear;
 }
 
 .contentWrapper{

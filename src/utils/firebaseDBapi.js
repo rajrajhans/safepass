@@ -1,6 +1,7 @@
 // Contains functions for CRUD operations on the Firebase database
 import firebase from 'firebase/app';
 import { encrypt } from './securityTools';
+import { decryptPasswords } from './securityTools';
 
 async function createNewPassword(userID, passwordInfo) {
   const passwordID = firebase.database().ref().child('passwords').push().key;
@@ -20,8 +21,17 @@ async function createNewPassword(userID, passwordInfo) {
   await passRecordRef.set(encryptedPassword);
 }
 
+async function getPasswords(userID) {
+  const passwordsRef = firebase.database().ref(`/users/${userID}/passwords`);
+
+  return await passwordsRef
+    .once('value')
+    .then(data => data.val())
+    .then(res => decryptPasswords(res));
+}
+
 function getFirebasePasswordReference(userID, passwordID) {
   return firebase.database().ref(`/users/${userID}/passwords/${passwordID}`);
 }
 
-export { createNewPassword };
+export { createNewPassword, getPasswords };

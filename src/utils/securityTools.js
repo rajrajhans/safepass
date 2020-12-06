@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import sjcl from 'sjcl';
 import { key } from '../config';
+import * as lodash from 'lodash';
 
 export const encrypt = data => {
   if (!data) {
@@ -25,6 +26,19 @@ export const decrypt = data => {
 
   return JSON.parse(decrypted);
 };
+
+export function decryptPasswords(data) {
+  if (!data) return null;
+
+  return lodash.reduce(
+    data,
+    (result, value, key) => {
+      result[key] = decrypt(value);
+      return result;
+    },
+    {}
+  );
+}
 
 export const generatePasswordHash = password => {
   if (!password) {
