@@ -132,8 +132,11 @@ const MyPasswords = () => {
                 </>
               )}
             </Table>
-            {isPwdsLoading ? <LoadingPasswords /> : null}
-            {!passwords.length ? <NoPasswords /> : null}
+            {isPwdsLoading ? (
+              <LoadingPasswords />
+            ) : (
+              <>{!passwords.length ? <NoPasswords /> : null}</>
+            )}
           </Card.Body>
         </Card>
       </div>
