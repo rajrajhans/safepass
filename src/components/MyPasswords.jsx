@@ -102,33 +102,38 @@ const MyPasswords = () => {
                 <th>Edit</th>
               </thead>
               {isPwdsLoading ? null : (
-                <tbody>
-                  {passwords.map(pwdTuple => (
-                    <tr key={pwdTuple[0]}>
-                      <td>{pwdTuple[1].title}</td>
-                      <td>{pwdTuple[1].category}</td>
-                      <td>{pwdTuple[1].username}</td>
-                      <td>
-                        <PasswordField pwd={pwdTuple[1].password} />
-                      </td>
-                      <td>{parseDate(pwdTuple[1].updatedAt)}</td>
-                      <td>
-                        <Button
-                          variant={'outline-primary'}
-                          onClick={() => {
-                            setCurrentlyEditing(pwdTuple);
-                            setIsEditPwdActive(true);
-                          }}
-                        >
-                          🖊️
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
+                <>
+                  {!passwords.length ? null : (
+                    <tbody>
+                      {passwords.map(pwdTuple => (
+                        <tr key={pwdTuple[0]}>
+                          <td>{pwdTuple[1].title}</td>
+                          <td>{pwdTuple[1].category}</td>
+                          <td>{pwdTuple[1].username}</td>
+                          <td>
+                            <PasswordField pwd={pwdTuple[1].password} />
+                          </td>
+                          <td>{parseDate(pwdTuple[1].updatedAt)}</td>
+                          <td>
+                            <Button
+                              variant={'outline-primary'}
+                              onClick={() => {
+                                setCurrentlyEditing(pwdTuple);
+                                setIsEditPwdActive(true);
+                              }}
+                            >
+                              🖊️
+                            </Button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  )}
+                </>
               )}
             </Table>
             {isPwdsLoading ? <LoadingPasswords /> : null}
+            {!passwords.length ? <NoPasswords /> : null}
           </Card.Body>
         </Card>
       </div>
@@ -141,11 +146,21 @@ const styles = {
   rightcol: { textAlign: 'right' },
   cardHeaderTitle: { margin: 0, lineHeight: 1.5 },
   loading: { textAlign: 'center', margin: '50px' },
+  noPasswords: { textAlign: 'center' },
 };
 
 const LoadingPasswords = () => (
   <Container style={styles.loading}>
     <Spinner animation="border" role="status" />
+  </Container>
+);
+
+const NoPasswords = () => (
+  <Container style={styles.noPasswords}>
+    <Card body>
+      Hey there, looks like you don't have any passwords saved yet! Click on
+      "Add New Password" to add one!
+    </Card>
   </Container>
 );
 
