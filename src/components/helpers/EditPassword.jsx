@@ -5,10 +5,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import PasswordGenerator from './PasswordGenerator';
 import { InputGroup } from 'react-bootstrap';
-import { updatePassword } from '../../utils/firebaseDBapi';
+import { updatePassword, deletePassword } from '../../utils/firebaseDBapi';
 import { AuthContext } from './AuthContext';
 import { LoadingContext } from './LoadingContext';
-import Fade from 'react-bootstrap/Fade';
 import Collapse from 'react-bootstrap/Collapse';
 
 const EditPassword = ({
@@ -45,6 +44,15 @@ const EditPassword = ({
       id: pwdTuple[0],
     };
     await updatePassword(currentUser.uid, passwordInfo);
+    refreshDashboard();
+    setIsLoading(false);
+  };
+
+  const handleDelete = async e => {
+    e.preventDefault();
+    handleClose();
+    setIsLoading(true);
+    await deletePassword(currentUser.uid, pwdTuple[0]);
     refreshDashboard();
     setIsLoading(false);
   };
@@ -169,6 +177,10 @@ const EditPassword = ({
         <Modal.Footer>
           <Button variant={'secondary'} onClick={handleClose}>
             Close
+          </Button>
+
+          <Button variant={'danger'} onClick={handleDelete}>
+            Delete
           </Button>
 
           <Button variant={'primary'} type={'Submit'}>
