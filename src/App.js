@@ -12,8 +12,8 @@ import Home from './components/Home';
 
 const App = () => {
   return (
-    <AuthProvider>
-      <LoadingProvider>
+    <LoadingProvider>
+      <AuthProvider>
         <CustomNavbar />
         <Router>
           <Home path={'/'} />
@@ -22,8 +22,8 @@ const App = () => {
           <Logout path={'/logout'} />
           <PrivateRoute component={MyPasswords} path={'/dashboard'} />
         </Router>
-      </LoadingProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </LoadingProvider>
   );
 };
 
