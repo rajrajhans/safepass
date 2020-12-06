@@ -1,15 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import RangeSlider from 'react-bootstrap-range-slider';
+import { Form, InputGroup, Card } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 
 const PasswordGenerator = ({ isActive, setPassword }) => {
+  const [pwdlength, setPwdlength] = useState(8);
+  const [isNum, setIsNum] = useState(true);
+  const [isAlphabets, setIsAlphabets] = useState(true);
+  const [isSpecialChar, setIsSpecialChar] = useState(false);
+
   if (!isActive) return null;
 
   return (
-    <Row>
-      <Col>Hi</Col>
-      <Col>Ok</Col>
-    </Row>
+    <Card>
+      <Card.Body className={'passwordGenCard'}>
+        <Row>
+          <Col>
+            <Form.Label>Password Length</Form.Label>
+            <InputGroup>
+              <Form.Control
+                onChange={e => setPwdlength(e.target.value)}
+                value={pwdlength}
+              />
+              <InputGroup.Append>
+                <InputGroup.Text id="basic-addon2">characters</InputGroup.Text>
+              </InputGroup.Append>
+            </InputGroup>
+            <RangeSlider
+              value={pwdlength}
+              onChange={e => setPwdlength(e.target.value)}
+              variant={'primary'}
+              min={5}
+              max={40}
+            />
+          </Col>
+          <Col>
+            <Form.Label>Password Options</Form.Label>
+            <Form.Check
+              type={'checkbox'}
+              label={'Numbers'}
+              checked={isNum}
+              onChange={e => setIsNum(e.target.checked)}
+              className={'passwordGenCheckbox'}
+            />
+            <Form.Check
+              type={'checkbox'}
+              label={'Alphabets'}
+              checked={isAlphabets}
+              onChange={e => setIsAlphabets(e.target.checked)}
+              className={'passwordGenCheckbox'}
+            />
+            <Form.Check
+              type={'checkbox'}
+              label={'Special Characters'}
+              checked={isSpecialChar}
+              onChange={e => setIsSpecialChar(e.target.checked)}
+              className={'passwordGenCheckbox'}
+            />
+          </Col>
+        </Row>
+      </Card.Body>
+    </Card>
   );
 };
 
