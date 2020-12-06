@@ -6,6 +6,8 @@
 .pnp.js
 .prettierrc
 .eslintcache
+config.js
+/src/config.js
 
 # testing
 /coverage

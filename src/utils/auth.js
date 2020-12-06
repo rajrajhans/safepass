@@ -1,5 +1,11 @@
 import firebase from 'firebase/app';
-require('firebase/auth');
+import { decrypt } from './securityTools';
+import { firebasesecret } from '../config';
+import 'firebase/auth';
+
+export function firebaseInit() {
+  firebase.initializeApp(decrypt(firebasesecret));
+}
 
 export function signUpUser(email, password) {
   firebase

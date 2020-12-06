@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "safepass-8bf08",
     "public": "build",
     "ignore": [
       "firebase.json",
