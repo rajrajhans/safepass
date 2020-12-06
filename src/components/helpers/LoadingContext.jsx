@@ -4,8 +4,7 @@ export const LoadingContext = createContext();
 
 const applyLoadingStyles = () => {
   let loadingStyles = {
-    height: '100%',
-    width: '100%',
+    display: 'flex',
   };
   let loadingwrapper = document.getElementById('loadingWrapper');
   Object.assign(loadingwrapper.style, loadingStyles);
@@ -13,8 +12,7 @@ const applyLoadingStyles = () => {
 
 const cancelLoadingStyles = () => {
   let loadingStyles = {
-    height: '0%',
-    width: '0%',
+    display: 'none',
   };
   let loadingwrapper = document.getElementById('loadingWrapper');
   Object.assign(loadingwrapper.style, loadingStyles);

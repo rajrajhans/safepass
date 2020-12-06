@@ -5,6 +5,8 @@ import app from '../utils/firebaseInit';
 import { navigate } from '@reach/router';
 import { LoadingContext } from './helpers/LoadingContext';
 import { AuthContext } from './helpers/AuthContext';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
 
 const Signup = () => {
   const [signupState, setSignupState] = useState({
@@ -62,58 +64,66 @@ const Signup = () => {
   }
 
   return (
-    <div>
-      Signup
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="name">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="text"
-            required
-            name="displayname"
-            placeholder="Enter your name"
-            onChange={handlesignupChange}
-          />
-          <Form.Text className="text-muted">What shall we call you?</Form.Text>
-        </Form.Group>
+    <Container>
+      <Card style={{ marginTop: '30px' }}>
+        <Card.Header>
+          <Card.Title style={{ marginBottom: '0' }}>Register</Card.Title>
+        </Card.Header>
+        <Card.Body>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                required
+                name="displayname"
+                placeholder="Enter your name"
+                onChange={handlesignupChange}
+              />
+              <Form.Text className="text-muted">
+                What shall we call you?
+              </Form.Text>
+            </Form.Group>
 
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            required
-            name="email"
-            placeholder="Enter email"
-            onChange={handlesignupChange}
-          />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                required
+                name="email"
+                placeholder="Enter email"
+                onChange={handlesignupChange}
+              />
+              <Form.Text className="text-muted">
+                We'll never share your email with anyone else.
+              </Form.Text>
+            </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            name="password"
-            required
-            placeholder="Password"
-            onChange={handlesignupChange}
-          />
-          <Form.Text className="text-muted">
-            This will be your master password. Choose wisely!
-          </Form.Text>
-        </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                name="password"
+                required
+                placeholder="Password"
+                onChange={handlesignupChange}
+              />
+              <Form.Text className="text-muted">
+                This will be your master password. Choose wisely!
+              </Form.Text>
+            </Form.Group>
 
-        <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Keep me Signed In" />
-        </Form.Group>
+            <Form.Group controlId="formBasicCheckbox">
+              <Form.Check type="checkbox" label="Keep me Signed In" />
+            </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-    </div>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
+        </Card.Body>
+      </Card>
+    </Container>
   );
 };
 
