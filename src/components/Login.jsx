@@ -5,6 +5,8 @@ import app from '../utils/firebaseInit';
 import { navigate } from '@reach/router';
 import { AuthContext } from './helpers/AuthContext';
 import { LoadingContext } from './helpers/LoadingContext';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
 
 const Login = () => {
   const [loginState, setLoginState] = useState({ email: '', password: '' });
@@ -43,42 +45,49 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            required
-            name="email"
-            placeholder="Enter email"
-            onChange={handleLoginChange}
-          />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
+    <Container>
+      <Card style={{ marginTop: '30px' }}>
+        <Card.Header>
+          <Card.Title style={{ marginBottom: '0' }}>Login</Card.Title>
+        </Card.Header>
+        <Card.Body>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                required
+                name="email"
+                placeholder="Enter email"
+                onChange={handleLoginChange}
+              />
+              <Form.Text className="text-muted">
+                We'll never share your email with anyone else.
+              </Form.Text>
+            </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            name="password"
-            required
-            placeholder="Password"
-            onChange={handleLoginChange}
-          />
-        </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                name="password"
+                required
+                placeholder="Password"
+                onChange={handleLoginChange}
+              />
+            </Form.Group>
 
-        <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Keep me Signed In" />
-        </Form.Group>
+            <Form.Group controlId="formBasicCheckbox">
+              <Form.Check type="checkbox" label="Keep me Signed In" />
+            </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-    </div>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
+        </Card.Body>
+      </Card>
+    </Container>
   );
 };
 
