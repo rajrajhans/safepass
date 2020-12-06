@@ -3,6 +3,7 @@ import React, { Component, useContext } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Logo from './Logo';
 import { AuthContext } from './AuthContext';
+import { Link } from '@reach/router';
 
 const CustomNavbar = () => {
   const { currentUser } = useContext(AuthContext);
@@ -16,18 +17,28 @@ const CustomNavbar = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className={'justify-content-end'}>
         <Nav>
-          <Nav.Link href="/">Home</Nav.Link>
+          <Link to="/" className={'nav-link'}>
+            Home
+          </Link>
           {currentUser ? (
             <>
-              <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+              <Link to="/dashboard" className={'nav-link'}>
+                Dashboard
+              </Link>
 
-              <Nav.Link href="/logout">Sign Out</Nav.Link>
+              <Link to="/logout" className={'nav-link'}>
+                Sign Out
+              </Link>
             </>
           ) : (
             <>
-              <Nav.Link href="/login">Sign In</Nav.Link>
+              <Link to="/login" className={'nav-link'}>
+                Sign In
+              </Link>
 
-              <Nav.Link href="/signup">Sign Up</Nav.Link>
+              <Link to="/signup" className={'nav-link'}>
+                Sign Up
+              </Link>
             </>
           )}
         </Nav>
