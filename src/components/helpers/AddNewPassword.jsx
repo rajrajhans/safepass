@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Form, Modal } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import PasswordGenerator from './PasswordGenerator';
 import { InputGroup } from 'react-bootstrap';
+import { createNewPassword } from '../../utils/firebaseDBapi';
+import { AuthContext } from './AuthContext';
 
 const AddNewPassword = ({ isActive, handleClose }) => {
   const [formState, setFormState] = useState({
@@ -19,8 +21,11 @@ const AddNewPassword = ({ isActive, handleClose }) => {
 
   const [isPwdGenActive, setIsPwdGenActive] = useState(false);
 
-  const handleSubmit = () => {
-    console.log('Submitted');
+  const { currentUser } = useContext(AuthContext);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    createNewPassword(currentUser.uid, password);
   };
 
   const handleFormChange = e => {
@@ -41,6 +46,7 @@ const AddNewPassword = ({ isActive, handleClose }) => {
   const handlePwdGenToggle = e => {
     e.preventDefault();
     setIsPwdGenActive(!isPwdGenActive);
+    setIsPwdVisible(true);
   };
 
   return (
@@ -117,7 +123,7 @@ const AddNewPassword = ({ isActive, handleClose }) => {
             <a href={'#'} onClick={handlePwdGenToggle}>
               {!isPwdGenActive
                 ? 'Generate a Secure Password'
-                : 'Close Generator'}
+                : 'Close Password Generator'}
               <br />
             </a>
           </div>
