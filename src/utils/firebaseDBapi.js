@@ -21,6 +21,23 @@ async function createNewPassword(userID, passwordInfo) {
   await passRecordRef.set(encryptedPassword);
 }
 
+async function updatePassword(userID, updatedInfo) {
+  const passwordID = updatedInfo.id;
+  const passRecordRef = getFirebasePasswordReference(userID, passwordID);
+
+  const updatedPassword = {
+    category: updatedInfo.category,
+    title: updatedInfo.title,
+    username: updatedInfo.username,
+    password: updatedInfo.password,
+    updatedAt: Date.now(),
+  };
+
+  const encryptedUpdatedPassword = encrypt(updatedPassword);
+
+  await passRecordRef.set(encryptedUpdatedPassword);
+}
+
 async function getPasswords(userID) {
   const passwordsRef = firebase.database().ref(`/users/${userID}/passwords`);
 
@@ -34,4 +51,4 @@ function getFirebasePasswordReference(userID, passwordID) {
   return firebase.database().ref(`/users/${userID}/passwords/${passwordID}`);
 }
 
-export { createNewPassword, getPasswords };
+export { createNewPassword, getPasswords, updatePassword };

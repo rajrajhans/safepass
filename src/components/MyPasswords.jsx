@@ -12,16 +12,23 @@ import { getPasswords } from '../utils/firebaseDBapi';
 import Spinner from 'react-bootstrap/Spinner';
 import { Form } from 'react-bootstrap';
 import PasswordField from './helpers/PasswordField';
+import EditPassword from './helpers/EditPassword';
 
 const MyPasswords = () => {
   const [isAddPwdActive, setIsAddPwdActive] = useState(false);
+  const [isEditPwdActive, setIsEditPwdActive] = useState(false);
   const [isPwdsLoading, setIsPwdsLoading] = useState(true);
   const [passwords, setPasswords] = useState([]);
+  const [currentlyEditing, setCurrentlyEditing] = useState([
+    null,
+    { category: 'General', title: '', username: '', password: '' },
+  ]);
 
   const { currentUser } = useContext(AuthContext);
 
   const handleClose = () => {
     setIsAddPwdActive(false);
+    setIsEditPwdActive(false);
   };
 
   const getAndSetPasswordstoState = () => {
@@ -34,7 +41,6 @@ const MyPasswords = () => {
         ]);
         pwdArray = pwdArray.reverse();
         setPasswords(pwdArray);
-        console.log(pwdArray);
         setIsPwdsLoading(false);
       })
       .catch(error => {
@@ -59,6 +65,12 @@ const MyPasswords = () => {
         isActive={isAddPwdActive}
         handleClose={handleClose}
         refreshDashboard={getAndSetPasswordstoState}
+      />
+      <EditPassword
+        isActive={isEditPwdActive}
+        handleClose={handleClose}
+        refreshDashboard={getAndSetPasswordstoState}
+        pwdTuple={currentlyEditing}
       />
       <div>
         <div className="welcomeText">Welcome, {currentUser.displayName}.</div>
@@ -87,6 +99,7 @@ const MyPasswords = () => {
                 <th>Username / Email</th>
                 <th>Password</th>
                 <th>Last Updated</th>
+                <th>Edit</th>
               </thead>
               {isPwdsLoading ? null : (
                 <tbody>
@@ -99,6 +112,17 @@ const MyPasswords = () => {
                         <PasswordField pwd={pwdTuple[1].password} />
                       </td>
                       <td>{parseDate(pwdTuple[1].updatedAt)}</td>
+                      <td>
+                        <Button
+                          variant={'outline-primary'}
+                          onClick={() => {
+                            setCurrentlyEditing(pwdTuple);
+                            setIsEditPwdActive(true);
+                          }}
+                        >
+                          🖊️
+                        </Button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
