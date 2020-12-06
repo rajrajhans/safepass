@@ -3,6 +3,7 @@ import { AuthContext } from './helpers/AuthContext';
 import AddNewPassword from './helpers/AddNewPassword';
 import Button from 'react-bootstrap/Button';
 import '../styles/MyPasswords.css';
+import Container from 'react-bootstrap/Container';
 
 const MyPasswords = () => {
   const [isAddPwdActive, setIsAddPwdActive] = useState(false);
@@ -13,7 +14,7 @@ const MyPasswords = () => {
   };
 
   return (
-    <>
+    <Container>
       <AddNewPassword isActive={isAddPwdActive} handleClose={handleClose} />
       <div>
         <div className="welcomeText">Welcome, {currentUser.displayName}.</div>
@@ -21,7 +22,7 @@ const MyPasswords = () => {
           Add New Password
         </Button>
       </div>
-    </>
+    </Container>
   );
 };
 

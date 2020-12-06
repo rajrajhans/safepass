@@ -8,6 +8,8 @@ import { InputGroup } from 'react-bootstrap';
 import { createNewPassword } from '../../utils/firebaseDBapi';
 import { AuthContext } from './AuthContext';
 import { LoadingContext } from './LoadingContext';
+import Fade from 'react-bootstrap/Fade';
+import Collapse from 'react-bootstrap/Collapse';
 
 const AddNewPassword = ({ isActive, handleClose }) => {
   const [formState, setFormState] = useState({
@@ -139,9 +141,11 @@ const AddNewPassword = ({ isActive, handleClose }) => {
               <br />
             </a>
           </div>
-          {isPwdGenActive ? (
-            <PasswordGenerator setPassword={setPassword} />
-          ) : null}
+          <Collapse in={isPwdGenActive}>
+            <div className="test">
+              <PasswordGenerator setPassword={setPassword} />
+            </div>
+          </Collapse>
         </Modal.Body>
 
         <Modal.Footer>
