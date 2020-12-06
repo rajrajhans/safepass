@@ -16,7 +16,7 @@ import PasswordField from './helpers/PasswordField';
 const MyPasswords = () => {
   const [isAddPwdActive, setIsAddPwdActive] = useState(false);
   const [isPwdsLoading, setIsPwdsLoading] = useState(true);
-  const [passwords, setPasswords] = useState(null);
+  const [passwords, setPasswords] = useState([]);
 
   const { currentUser } = useContext(AuthContext);
 
@@ -28,8 +28,13 @@ const MyPasswords = () => {
     setIsPwdsLoading(true);
     getPasswords(currentUser.uid)
       .then(recvdPasswords => {
-        setPasswords(recvdPasswords);
-        console.log(recvdPasswords);
+        let pwdArray = Object.keys(recvdPasswords).map(key => [
+          key,
+          recvdPasswords[key],
+        ]);
+        pwdArray = pwdArray.reverse();
+        setPasswords(pwdArray);
+        console.log(pwdArray);
         setIsPwdsLoading(false);
       })
       .catch(error => {
@@ -85,15 +90,15 @@ const MyPasswords = () => {
               </thead>
               {isPwdsLoading ? null : (
                 <tbody>
-                  {Object.keys(passwords).map((keyName, i) => (
-                    <tr key={keyName}>
-                      <td>{passwords[keyName].title}</td>
-                      <td>{passwords[keyName].category}</td>
-                      <td>{passwords[keyName].username}</td>
+                  {passwords.map(pwdTuple => (
+                    <tr key={pwdTuple[0]}>
+                      <td>{pwdTuple[1].title}</td>
+                      <td>{pwdTuple[1].category}</td>
+                      <td>{pwdTuple[1].username}</td>
                       <td>
-                        <PasswordField pwd={passwords[keyName].password} />
+                        <PasswordField pwd={pwdTuple[1].password} />
                       </td>
-                      <td>{parseDate(passwords[keyName].updatedAt)}</td>
+                      <td>{parseDate(pwdTuple[1].updatedAt)}</td>
                     </tr>
                   ))}
                 </tbody>
