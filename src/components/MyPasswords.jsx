@@ -16,7 +16,7 @@ const MyPasswords = () => {
     <>
       <AddNewPassword isActive={isAddPwdActive} handleClose={handleClose} />
       <div>
-        <div className="welcomeText">Hello, {currentUser.displayName}</div>
+        <div className="welcomeText">Welcome, {currentUser.displayName}.</div>
         <Button onClick={() => setIsAddPwdActive(true)}>
           Add New Password
         </Button>

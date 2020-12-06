@@ -7,7 +7,10 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <div className="loadingWrapper" id={'loadingWrapper'} />
+    <div className="contentWrapper">
+      <App />
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );
