@@ -1,14 +1,23 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from './helpers/AuthContext';
+import AddNewPassword from './helpers/AddNewPassword';
 
-class MyPasswords extends Component {
-  constructor(props) {
-    super(props);
+const MyPasswords = () => {
+  const { currentUser } = useContext(AuthContext);
 
-    this.state = { showLoader: true, passwords: null };
-  }
-  render() {
-    return <div>Logged In</div>;
-  }
-}
+  const handleClose = () => {
+    console.log('Closed');
+  };
+
+  return (
+    <>
+      <div>
+        Hello, {currentUser.email}
+        <br />
+        <AddNewPassword isActive={true} handleClose={handleClose} />
+      </div>
+    </>
+  );
+};
 
 export default MyPasswords;
