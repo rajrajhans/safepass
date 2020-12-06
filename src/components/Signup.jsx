@@ -1,13 +1,12 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { signInUser } from '../utils/auth';
+import { signUpUser } from '../utils/auth';
 import app from '../utils/firebaseInit';
 import { navigate } from '@reach/router';
-import { AuthContext } from './helpers/AuthContext';
 
-const Login = () => {
-  const [loginState, setLoginState] = useState({ email: '', password: '' });
+const Signup = () => {
+  const [signupState, setSignupState] = useState({ email: '', password: '' });
 
   const handleSubmit = useCallback(
     async e => {
@@ -15,31 +14,29 @@ const Login = () => {
       try {
         await app
           .auth()
-          .signInWithEmailAndPassword(loginState.email, loginState.password);
+          .createUserWithEmailAndPassword(
+            signupState.email,
+            signupState.password
+          );
         navigate('/');
       } catch (e) {
         alert(e.message);
         console.log(e);
       }
     },
-    [loginState.email, loginState.password]
+    [signupState.email, signupState.password]
   );
 
-  const handleLoginChange = e => {
+  const handlesignupChange = e => {
     const nameOfField = e.target.name;
     const value = e.target.value;
 
-    setLoginState({ ...loginState, [nameOfField]: value });
+    setSignupState({ ...signupState, [nameOfField]: value });
   };
-
-  const { currentUser } = useContext(AuthContext);
-
-  if (currentUser) {
-    navigate('/');
-  }
 
   return (
     <div>
+      Signup
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -48,7 +45,7 @@ const Login = () => {
             required
             name="email"
             placeholder="Enter email"
-            onChange={handleLoginChange}
+            onChange={handlesignupChange}
           />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
@@ -62,7 +59,7 @@ const Login = () => {
             name="password"
             required
             placeholder="Password"
-            onChange={handleLoginChange}
+            onChange={handlesignupChange}
           />
         </Form.Group>
 
@@ -78,4 +75,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

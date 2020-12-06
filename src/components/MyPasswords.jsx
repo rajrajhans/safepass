@@ -7,7 +7,7 @@ class MyPasswords extends Component {
     this.state = { showLoader: true, passwords: null };
   }
   render() {
-    return <div></div>;
+    return <div>Logged In</div>;
   }
 }
 

@@ -1,15 +1,20 @@
 import React from 'react';
 import { Router } from '@reach/router';
 import Login from './components/Login';
-import { firebaseInit } from './utils/auth';
+import Signup from './components/Signup';
+import { AuthProvider } from './components/helpers/AuthContext';
+import PrivateRoute from './components/helpers/PrivateRoute';
+import MyPasswords from './components/MyPasswords';
 
 const App = () => {
-  firebaseInit();
-
   return (
-    <Router>
-      <Login path={'/'} />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Login path={'/login'} />
+        <Signup path={'/signup'} />
+        <PrivateRoute component={MyPasswords} path={'/'} />
+      </Router>
+    </AuthProvider>
   );
 };
 
