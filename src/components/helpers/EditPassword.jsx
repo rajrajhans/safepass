@@ -79,7 +79,6 @@ const EditPassword = ({
   };
 
   useEffect(() => {
-    console.log(pwdTuple);
     setFormState({
       category: pwdTuple[1].category,
       title: pwdTuple[1].title,
