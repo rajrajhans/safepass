@@ -22,10 +22,14 @@ const Signup = () => {
         await app
           .auth()
           .createUserWithEmailAndPassword(
-            signupState.displayname,
             signupState.email,
             signupState.password
-          );
+          )
+          .then(res => {
+            return res.user.updateProfile({
+              displayName: signupState.displayname,
+            });
+          });
         navigate('/');
         setIsLoading(false);
       } catch (e) {
@@ -34,7 +38,12 @@ const Signup = () => {
         console.log(e);
       }
     },
-    [signupState.email, signupState.password]
+    [
+      setIsLoading,
+      signupState.displayname,
+      signupState.email,
+      signupState.password,
+    ]
   );
 
   const handlesignupChange = e => {
