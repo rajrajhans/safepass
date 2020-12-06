@@ -28,6 +28,7 @@ const AddNewPassword = ({ isActive, handleClose }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    handleClose();
     setIsLoading(true);
     const passwordInfo = {
       category: formState.category,
@@ -36,7 +37,6 @@ const AddNewPassword = ({ isActive, handleClose }) => {
       password: password,
     };
     await createNewPassword(currentUser.uid, passwordInfo);
-    handleClose();
     setIsLoading(false);
   };
 
