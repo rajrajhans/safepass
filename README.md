@@ -10,7 +10,6 @@
   </a>
 </h1>
 
-
 <h4 align="center">
   Simple and Secure Password Management 
 </h4>
