@@ -7,7 +7,7 @@ import {
   Subheading as SubheadingBase,
 } from '../HomeComponents/HomeHeadings';
 import { PrimaryButton as PrimaryButtonBase } from '../HomeComponents/HomeButtons';
-import TeamIllustrationSrc from '../HomeComponents/team-illustration-2.svg';
+import TeamIllustrationSrc from '../HomeComponents/auth-illustration.svg';
 import { ReactComponent as SvgDotPattern } from '../HomeComponents/dot-pattern.svg';
 
 const Container = tw.div`relative`;
@@ -53,7 +53,7 @@ export default ({
   ),
   description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   primaryButtonText = 'Learn More',
-  primaryButtonUrl = 'https://timerse.com',
+  primaryButtonUrl = 'https://rajrajhans.com',
   imageSrc = TeamIllustrationSrc,
   buttonRounded = true,
   imageRounded = true,
