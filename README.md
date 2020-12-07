@@ -21,6 +21,9 @@ SafePass is a simple password management tool developed using ReactJS and Fireba
 
 Following is a sneak peek of how the interface looks.
 
+![](screencast/safepass.gif)
+
+
 | Home Screen                              | Home Screen                             | Sign Up / Sign In                            |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ |
 | ![](https://assets.rajrajhans.com/safepass_ss1.png) | ![](https://assets.rajrajhans.com/safepass_ss6.png) | ![](https://assets.rajrajhans.com/safepass_ss2.png) |
