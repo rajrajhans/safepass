@@ -23,7 +23,7 @@ const Home = () => {
         subheading="One Way Encrytion before saving"
         heading="Secure"
         description={
-          'Before saving your passwords to the cloud, SafePass encrypts your data using the SHA256 Hashing Algorithm. This ensures no one except you can read your data in plaintext. To know more about the Encryption Library used, click the button below'
+          'Before saving your passwords to the cloud, SafePass encrypts your data using the Industry Standard AES Algorithm. This ensures no one except you can read your data in plaintext. To know more about the Encryption Library used, click the button below'
         }
         imageSrc={SecurityIllus}
         primaryButtonText="Learn More"
