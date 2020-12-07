@@ -144,7 +144,10 @@ const AddNewPassword = ({ isActive, handleClose, refreshDashboard }) => {
           </div>
           <Collapse in={isPwdGenActive}>
             <div className="test">
-              <PasswordGenerator setPassword={setPassword} />
+              <PasswordGenerator
+                isPwdGenActive={isPwdGenActive}
+                setPassword={setPassword}
+              />
             </div>
           </Collapse>
         </Modal.Body>

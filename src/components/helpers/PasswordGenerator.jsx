@@ -5,14 +5,15 @@ import RangeSlider from 'react-bootstrap-range-slider';
 import { Form, InputGroup, Card } from 'react-bootstrap';
 import generatePassword from '../../utils/randomPasswordGenerator';
 
-const PasswordGenerator = ({ setPassword }) => {
+const PasswordGenerator = ({ isPwdGenActive, setPassword }) => {
   const [pwdlength, setPwdlength] = useState(8);
   const [isNum, setIsNum] = useState(true);
   const [isAlphabets, setIsAlphabets] = useState(true);
   const [isSpecialChar, setIsSpecialChar] = useState(false);
 
   useEffect(() => {
-    setPassword(generatePassword(pwdlength, isNum, isSpecialChar));
+    if (isPwdGenActive)
+      setPassword(generatePassword(pwdlength, isNum, isSpecialChar));
   }, [pwdlength, isNum, isSpecialChar, setPassword]);
 
   return (
