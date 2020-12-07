@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+<p align="center">
+  <a href="https://safepass.rajrajhans.com">
+    <img alt="SafePass" src="http://assets.rajrajhans.com/safepassLogo.png" width="120"/>
+  </a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+  <a href="https://safepass.rajrajhans.com" target="_blank">
+    SafePass
+  </a>
+</h1>
 
-## Available Scripts
 
-In the project directory, you can run:
+<h4 align="center">
+  Simple and Secure Password Management 
+</h4>
 
-### `npm start`
+SafePass is a simple password management tool developed using ReactJS and Firebase. It is live and accessible [here](https://safepass.rajrajhans.com).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Screenshots
 
-### `npm test`
+Following is a sneak peek of how the interface looks.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Home Screen                              | Home Screen                             | Sign Up / Sign In                            |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| ![](https://assets.rajrajhans.com/safepass_ss1.png) | ![](https://assets.rajrajhans.com/safepass_ss6.png) | ![](https://assets.rajrajhans.com/safepass_ss2.png) |
 
-### `npm run build`
+| Dashboard                              | Add New Password                             | Edit Password                             |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| ![](https://assets.rajrajhans.com/safepass_ss4.png) | ![](https://assets.rajrajhans.com/safepass_ss3.png) | ![](https://assets.rajrajhans.com/safepass_ss5.png) |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Running the project locally
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Create a new Firebase project and add a new "Web App" to it. Follow the [steps given here](https://firebase.google.com/docs/web/setup) until you get the "Firebase Config Object".
+2. Create a file `src/config.js` and paste your config object in it.
+3. In the same file, create a variable named "key" and paste a random string. This will be used for encryption, so make sure it is strong.
+4. Below is an example of the code in `src/config.js` for your reference - 
+```javascript
+export const key = 'RANDOM_STRING_HERE';
+export const firebaseConfig = {
+  apiKey: 'YOUR_FIREBASE_API_KEY',
+  authDomain: 'YOUR_FIREBASE_AUTH_DOMAIN',
+  databaseURL: 'YOUR_FIREBASE_DB_URL',
+  projectId: 'YOUR_FIREBASE_PROJECTID',
+  storageBucket: 'YOUR_FIREBASE_STORAGE_BUCKET',
+  messagingSenderId: 'YOUR_FIREBASE_SENDER_ID',
+  appId: 'YOUR_FIREBASE_APP_ID',
+};
+```
+5. Once this is done, run `npm install` to install all dependencies
+6. Finally, run `npm start` to run the app in development mode. 
