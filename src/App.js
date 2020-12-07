@@ -19,7 +19,7 @@ const App = () => {
           <Home path={'/'} />
           <Signup path={'/signup'} />
           <Login path={'/login'} />
-          <Logout path={'/logout'} />
+          <Logout path={'/signout'} />
           <PrivateRoute component={MyPasswords} path={'/dashboard'} />
         </Router>
       </AuthProvider>

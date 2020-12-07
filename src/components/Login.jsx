@@ -21,7 +21,7 @@ const Login = () => {
           .auth()
           .signInWithEmailAndPassword(loginState.email, loginState.password);
         setIsLoading(false);
-        navigate('/');
+        navigate('/dashboard');
       } catch (e) {
         setIsLoading(false);
         alert(e.message);
@@ -41,14 +41,14 @@ const Login = () => {
   const { currentUser } = useContext(AuthContext);
 
   if (currentUser) {
-    navigate('/');
+    navigate('/dashboard');
   }
 
   return (
     <Container>
       <Card style={{ marginTop: '30px' }}>
         <Card.Header>
-          <Card.Title style={{ marginBottom: '0' }}>Login</Card.Title>
+          <Card.Title style={{ marginBottom: '0' }}>Sign In</Card.Title>
         </Card.Header>
         <Card.Body>
           <Form onSubmit={handleSubmit}>

@@ -33,7 +33,7 @@ const Signup = () => {
             });
           })
           .then(() => {
-            navigate('/');
+            navigate('/dashboard');
             setIsLoading(false);
           });
       } catch (e) {
@@ -60,14 +60,14 @@ const Signup = () => {
   const { currentUser } = useContext(AuthContext);
 
   if (currentUser) {
-    navigate('/');
+    navigate('/dashboard');
   }
 
   return (
     <Container>
       <Card style={{ marginTop: '30px' }}>
         <Card.Header>
-          <Card.Title style={{ marginBottom: '0' }}>Register</Card.Title>
+          <Card.Title style={{ marginBottom: '0' }}>Sign Up</Card.Title>
         </Card.Header>
         <Card.Body>
           <Form onSubmit={handleSubmit}>
