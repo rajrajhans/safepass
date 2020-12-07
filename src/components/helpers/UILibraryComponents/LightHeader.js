@@ -4,9 +4,9 @@ import tw from 'twin.macro';
 import styled from 'styled-components';
 import { css } from 'styled-components/macro'; //eslint-disable-line
 
-import useAnimatedNavToggler from '../HomeComponents/useAnimatedNavToggler.js';
+import useAnimatedNavToggler from './/useAnimatedNavToggler.js';
 
-import logo from '../HomeComponents/logo-light.png';
+import logo from './/logo-light.png';
 import { ReactComponent as MenuIcon } from 'feather-icons/dist/icons/menu.svg';
 import { ReactComponent as CloseIcon } from 'feather-icons/dist/icons/x.svg';
 

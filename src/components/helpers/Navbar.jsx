@@ -1,15 +1,15 @@
 import React, { Component, useContext } from 'react';
 import { AuthContext } from './AuthContext';
 import { Link, navigate } from '@reach/router';
-import logoImageSrc from './HomeComponents/logo-light.png';
+import logoImageSrc from './UILibraryComponents/logo-light.png';
 import HeaderBase, {
   LogoLink as LogoLinkBase,
   NavLinks,
   NavLink as NavLinkBase,
   PrimaryLink as PrimaryLinkBase,
-} from '../helpers/HomeComponents/LightHeader';
+} from './UILibraryComponents/LightHeader';
 import tw from 'twin.macro';
-import { Content2Xl } from './HomeComponents/HomeLayouts';
+import { Content2Xl } from './UILibraryComponents/HomeLayouts';
 
 const Header = tw(HeaderBase)`max-w-none -mt-8 py-8 -mx-8 px-8`;
 const NavLink = tw(
@@ -26,7 +26,7 @@ const CustomNavbar = () => {
 
   const logoLink = (
     <LogoLink href="/">
-      <img src={logoImageSrc} alt="Logo" />
+      <img src={logoImageSrc} alt="SafePass" className={'navLogoSafepass'} />
       SafePass
     </LogoLink>
   );

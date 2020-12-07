@@ -1,9 +1,9 @@
 import React from 'react';
-import AnimationRevealPage from './helpers/HomeComponents/AnimationRevealPage';
-import HeroComponent from './helpers/HomeComponents/HeroComponent';
-import FeaturesTwoCol from './helpers/HomeComponents/FeaturesTwoCol';
-import CodeIllustration from '../components/helpers/HomeComponents/code_illus.svg';
-import SecurityIllus from '../components/helpers/HomeComponents/securityIllus.svg';
+import AnimationRevealPage from './helpers/UILibraryComponents/AnimationRevealPage';
+import HeroComponent from './helpers/UILibraryComponents/HeroComponent';
+import FeaturesTwoCol from './helpers/UILibraryComponents/FeaturesTwoCol';
+import CodeIllustration from './helpers/UILibraryComponents/code_illus.svg';
+import SecurityIllus from './helpers/UILibraryComponents/securityIllus.svg';
 
 const Home = () => {
   return (

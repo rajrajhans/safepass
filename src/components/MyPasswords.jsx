@@ -147,7 +147,7 @@ const MyPasswords = () => {
 const styles = {
   card: { marginTop: '25px' },
   rightcol: { textAlign: 'right' },
-  cardHeaderTitle: { margin: 0, lineHeight: 1.5 },
+  cardHeaderTitle: { margin: 0, lineHeight: 1.5, fontSize: '1.5rem' },
   loading: { textAlign: 'center', margin: '50px' },
   noPasswords: { textAlign: 'center' },
 };

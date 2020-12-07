@@ -2,13 +2,10 @@ import React from 'react';
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import { css } from 'styled-components/macro'; //eslint-disable-line
-import {
-  SectionHeading,
-  Subheading as SubheadingBase,
-} from '../HomeComponents/HomeHeadings';
-import { PrimaryButton as PrimaryButtonBase } from '../HomeComponents/HomeButtons';
-import TeamIllustrationSrc from '../HomeComponents/auth-illustration.svg';
-import { ReactComponent as SvgDotPattern } from '../HomeComponents/dot-pattern.svg';
+import { SectionHeading, Subheading as SubheadingBase } from './/HomeHeadings';
+import { PrimaryButton as PrimaryButtonBase } from './/HomeButtons';
+import TeamIllustrationSrc from './/auth-illustration.svg';
+import { ReactComponent as SvgDotPattern } from './/dot-pattern.svg';
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;

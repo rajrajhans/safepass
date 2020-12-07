@@ -7,12 +7,12 @@ import HeaderBase, {
   NavLinks,
   NavLink as NavLinkBase,
   PrimaryLink as PrimaryLinkBase,
-} from '../HomeComponents/LightHeader';
+} from './/LightHeader';
 import {
   Container as ContainerBase,
   ContentWithVerticalPadding,
   Content2Xl,
-} from '../HomeComponents/HomeLayouts.js';
+} from './/HomeLayouts.js';
 import { SectionHeading } from './HomeHeadings';
 import { SectionDescription } from './HomeTypography';
 import { PrimaryButton as PrimaryButtonBase } from './HomeButtons';
