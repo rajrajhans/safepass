@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'tailwindcss/dist/base.css';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import '../src/styles/main.css';
 import App from './App';
-import logo from '../src/static/logo.png';
+import logo from '../src/static/logo-light.png';
+import { css } from 'styled-components/macro';
 
 ReactDOM.render(
   <React.StrictMode>

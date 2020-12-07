@@ -1,5 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body{
     font-family: 'Source Sans Pro', sans-serif;
+}
+
+a{
+    text-decoration: none!important;
+}
+
+.App{
+    padding: 0 !important;
+    min-height: 80vh;
 }
 
 .bigLine{
@@ -7,6 +20,10 @@ body{
     margin-top: -3px;
     width: 50px;
     background: #0069d9;
+}
+
+.hovecp{
+    font-size: 17px;
 }
 
 .loadingWrapper {
