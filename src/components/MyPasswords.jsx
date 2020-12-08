@@ -92,7 +92,7 @@ const MyPasswords = () => {
           </Card.Header>
 
           <Card.Body>
-            <Table bordered hover>
+            <Table bordered hover responsive>
               <thead>
                 <th>Title</th>
                 <th>Category</th>
