@@ -1,20 +1,33 @@
 import { shuffle } from 'lodash';
 
-function generatePassword(length, isNum, isSpecChar) {
+function generatePassword(length, isNum, isSpecChar, isAlphabets) {
   let password = '';
   let numDigits = 0;
   let numSpecChars = 0;
+  let numLetters = 0;
 
-  if (isNum && isSpecChar) {
+  if (isNum && isSpecChar && isAlphabets) {
     numDigits = Math.floor(length / 3);
     numSpecChars = Math.floor(length / 3);
-  } else if (isNum) {
-    numDigits = length / 2;
+    numLetters = length - numDigits - numSpecChars;
+  } else if (isNum && isSpecChar) {
+    numDigits = Math.floor(length / 2);
+    numSpecChars = length - numDigits;
+  } else if (isSpecChar && isAlphabets) {
+    numLetters = Math.floor(length / 2);
+    numSpecChars = length - numLetters;
+  } else if (isNum && isAlphabets) {
+    numLetters = Math.floor(length / 2);
+    numDigits = length - numLetters;
   } else if (isSpecChar) {
-    numSpecChars = length / 2;
+    numSpecChars = length;
+  } else if (isNum) {
+    numDigits = length;
+  } else if (isAlphabets) {
+    numLetters = length;
   }
 
-  password = generate(length, numDigits, numSpecChars);
+  password = generate(length, numDigits, numSpecChars, numLetters);
 
   return password;
 }
@@ -31,9 +44,13 @@ function getRandomNum() {
   return Math.floor(Math.random() * 10);
 }
 
-function generate(length, numOfDigits = 0, numOfSpecChars = 0) {
+function generate(
+  length,
+  numOfDigits = 0,
+  numOfSpecChars = 0,
+  numOfLetters = 0
+) {
   const tempArray = [];
-  const numOfLetters = length - numOfDigits - numOfSpecChars;
   let password = '';
 
   for (let i = 0; i < numOfLetters; i++) {

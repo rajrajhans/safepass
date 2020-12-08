@@ -13,8 +13,10 @@ const PasswordGenerator = ({ isPwdGenActive, setPassword }) => {
 
   useEffect(() => {
     if (isPwdGenActive)
-      setPassword(generatePassword(pwdlength, isNum, isSpecialChar));
-  }, [pwdlength, isNum, isSpecialChar, setPassword]);
+      setPassword(
+        generatePassword(pwdlength, isNum, isSpecialChar, isAlphabets)
+      );
+  }, [pwdlength, isNum, isSpecialChar, setPassword, isAlphabets]);
 
   return (
     <Card>
