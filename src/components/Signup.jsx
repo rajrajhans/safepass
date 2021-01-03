@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import app from '../utils/firebaseInit';
-import { navigate } from '@reach/router';
+import { navigate, Link } from '@reach/router';
 import { LoadingContext } from './helpers/LoadingContext';
 import { AuthContext } from './helpers/AuthContext';
 import Card from 'react-bootstrap/Card';
@@ -122,6 +122,9 @@ const Signup = () => {
             </Button>
           </Form>
         </Card.Body>
+<Card.Footer>
+<Link to='/login' style={{color:'#3c0d99'}}>Already have an account? Sign In</Link>
+	</Card.Footer>
       </Card>
     </Container>
   );
