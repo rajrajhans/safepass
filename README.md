@@ -14,8 +14,9 @@
   Simple and Secure Password Management 
 </h4>
 
-SafePass is a simple password management tool developed using ReactJS and Firebase. It is live and accessible [here](https://safepass.rajrajhans.com).
+SafePass is a simple password management tool developed using ReactJS and Firebase. It is live and accessible [here](https://safepass.rajrajhans.com). 
 
+I am also working on developing an Android Client for SafePass using React Native. Check out [this repo](https://github.com/rajrajhans/safepass-android) for the Android app.
 
 ### Screenshots
 
