@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://safepass.rajrajhans.com">
-    <img alt="SafePass" src="http://assets.rajrajhans.com/safepassLogo.png" width="120"/>
+    <img alt="SafePass" src="src/static/logo-light.png" width="120"/>
   </a>
 </p>
 
@@ -23,15 +23,6 @@ I am also working on developing an Android Client for SafePass using React Nativ
 Following is a sneak peek of how the interface looks.
 
 ![](screencast/safepass.gif)
-
-
-| Home Screen                              | Home Screen                             | Sign Up / Sign In                            |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| ![](https://assets.rajrajhans.com/safepass_ss1.png) | ![](https://assets.rajrajhans.com/safepass_ss6.png) | ![](https://assets.rajrajhans.com/safepass_ss2.png) |
-
-| Dashboard                              | Add New Password                             | Edit Password                             |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| ![](https://assets.rajrajhans.com/safepass_ss4.png) | ![](https://assets.rajrajhans.com/safepass_ss3.png) | ![](https://assets.rajrajhans.com/safepass_ss5.png) |
 
 ### Running the project locally
 
